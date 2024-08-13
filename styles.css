@@ -1,0 +1,1198 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee&family=B612&family=Caveat+Brush&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'ABeeZee', Arial, sans-serif;
+    overflow: auto;
+    background: linear-gradient(315deg, rgb(116, 249, 171) 3%, rgba(60,132,206,1) 38%, rgba(48,238,226,1) 68%, rgb(170, 101, 254) 98%);
+    animation: gradient 15s ease infinite;
+    background-size: 400% 400%;
+    background-attachment: fixed;
+}
+
+h4 {
+  font-family: 'ABeeZee', Arial, sans-serif;
+  font-size: 0.9em; /* Adjust the font size */
+  color: #262626; /* Change the text color */
+  line-height: 0.1; 
+  font-weight: 400;
+}
+
+
+
+.container {
+    font-family: 'B612', sans-serif;
+    
+    
+}
+
+
+  :root {
+    --navbar-height: 70px; /* Default height of the navbar */
+}
+
+
+/* Styles for the desktop navigation bar */
+.navbar {
+  background-color: rgba(0, 0, 0, 0.329); 
+  overflow: hidden;
+  width: 100%;
+  height: var(--navbar-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar a.navbar-brand {
+  margin-left: 20px; /* Adjust the margin for the logo */
+}
+
+.navbar a.navbar-brand img {
+  max-width: 100%; /* Ensure the logo image fits within its container */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.navbar ul {
+  display: flex;
+  justify-content: flex-end; /* Align links to the right */
+  margin-right: var(--link-spacing, 60px); /* Use CSS variable for link spacing */
+  margin-left: auto; /* Push the ul to the center */
+}
+
+.navbar li {
+  list-style-type: none;
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  padding: 14px 20px; /* Adjust padding for all sides */
+}
+
+.navbar a:hover {
+  background-color: #00000000;
+  color: #333;
+}
+
+/* Media query for screens up to 768px width */
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Align items to the center */
+  }
+
+  .navbar ul {
+    margin: 10px 0; /* Adjust margin for smaller screens */
+  }
+
+  .navbar a {
+    padding: 10px; /* Adjust padding for smaller screens */
+  }
+}
+
+/* Styles for the mobile navigation bar */
+
+.navbar-brand {
+  margin-left: -50px; /* Remove any margin */
+  
+}
+
+.navbar1 {
+  padding-left: 0;
+  background-color: rgba(0, 0, 0, 0.329); 
+  overflow: hidden;
+  width: 100%;
+  height: 40px;
+  display: none; /* Hide the navbar by default */
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Define styles for the toggle button */
+.toggle-button {
+  display: block; /* Display the toggle button as a block element */
+  position: absolute; /* Position the toggle button absolutely */
+  top: 7px; /* Adjust top position as needed */
+  right: 5px; /* Adjust right position as needed */
+  /*width: 40px;
+  height: 40px;
+  background-color: #ff0000; 
+  border: none; */
+}
+
+/* Define styles for the navigation links */
+.navbar1 ul {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: var(--link-spacing, 60px);
+  margin-left: auto;
+}
+
+/* Define styles for the navigation links */
+.navbar1 li {
+  list-style-type: none;
+}
+
+/* Define styles for the navigation links */
+.navbar1 a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 14px 60px;
+}
+
+/* Define styles for the toggle button icon */
+.toggle-button-icon {
+  display: none; /* Hide the toggle button icon by default */
+}
+
+/* Media query for screens smaller than 768px (mobile devices) */
+@media screen and (max-width: 767px) {
+  /* Hide the desktop navigation bar */
+  .navbar {
+      display: none;
+  }
+
+  /* Display the mobile navigation bar */
+  .navbar1 {
+      display: flex;
+  }
+
+  .toggle-button {
+      display: block; /* Display the toggle button on mobile devices */
+  }
+
+  .navbar1 ul {
+      display: none; /* Hide the navigation links by default on mobile devices */
+      flex-direction: column; /* Stack the navigation links vertically on mobile devices */
+      position: absolute; /* Position the navigation links absolutely */
+      top: var(--navbar-height); /* Position the navigation links below the navbar */
+      right: 0; /* Align the navigation links to the right */
+      background-color:none; /* Background color for the navigation links */
+      width: 100%; /* Set the width of the navigation links to 100% */
+  }
+
+  .navbar1 ul.active {
+      display: flex; /* Display the navigation links when the navbar is active */
+  }
+
+  .toggle-button.active .toggle-button-icon {
+      display: none; /* Hide the toggle button icon when the navbar is active */
+  }
+
+  .toggle-button.active .toggle-button-icon.open {
+      display: inline-block; /* Display the open toggle button icon when the navbar is active */
+  }
+
+:hover{
+  color: black;
+  background-color: #00000000;
+}
+
+  .vertical-menu {
+    display: none; /* Initially hide the vertical menu */
+}
+
+.vertical-menu.show-menu {
+  display: block; /* Show the vertical menu */
+}
+
+}
+
+.menu-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
+.menu-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.537);
+  z-index: 11;
+}
+
+.menu-container.active {
+  display: block;
+}
+
+.vertical-menu {
+  list-style-type: none; /* Remove default list styles */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+
+}
+
+.vertical-menu li {
+  padding: 10px 10px; /* Add padding to each menu item */
+  white-space: nowrap; /* Prevent text wrapping */
+
+}
+
+.vertical-menu li a {
+  text-decoration: none; /* Remove default underline */
+  color: rgb(255, 255, 255); /* Set text color */
+  font-size: 16px; /* Adjust font size if necessary */
+  outline: none; /* Remove outline on focus */
+}
+
+.vertical-menu li:not(:last-child) {
+  margin-bottom: 10px; /* Add margin between menu items */
+}
+
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+
+  @keyframes gradient {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+.wave {
+    background: rgb(255 255 255 / 25%);
+    border-radius: 1000% 1000% 0 0;
+    position: fixed;
+    width: 200%;
+    height: 12em;
+    animation: wave 10s -3s linear infinite;
+    transform: translate3d(0, 0, 0);
+    opacity: 0.8;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.wave:nth-of-type(2) {
+    bottom: -1.25em;
+    animation: wave 18s linear reverse infinite;
+    opacity: 0.8;
+}
+
+.wave:nth-of-type(3) {
+    bottom: -2.5em;
+    animation: wave 20s -1s reverse infinite;
+    opacity: 0.9;
+}
+
+@keyframes wave {
+    2% {
+        transform: translateX(1);
+    }
+
+    25% {
+        transform: translateX(-25%);
+    }
+
+    50% {
+        transform: translateX(-50%);
+    }
+
+    75% {
+        transform: translateX(-25%);
+    }
+
+    100% {
+        transform: translateX(1);
+    }
+}
+
+h1 {
+	color: #333;
+	font-family: tahoma;
+	font-size: 3rem;
+	font-weight: 100;
+	line-height: 1.5;
+	text-transform: uppercase;
+	white-space: nowrap;
+	overflow: hidden;
+	position: relative;
+	width: 800px;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  }
+  
+
+  h1 span {
+	font-size: 40px;
+  margin-top:10px;
+	margin-left: 40px;
+  }
+
+   
+  .message {
+	/* background-color: #00FFFF; */
+	background-color: #5effe7;
+	
+	color: #333;
+	font-weight: 900;
+	position: absolute;
+	padding-left: 0.5rem;
+	top: 0.2rem;
+	left: 500px;
+	animation: openclose 5s ease-in-out infinite;
+	/* Added: Perspective for 3D effect */
+	perspective: 1000px;
+  }
+
+  @media screen and (max-width: 767px) {
+    h1 {
+        font-size: 2rem; /* Adjust font size for smaller screens */
+        width: auto; /* Adjust width to fit the content */
+        text-align: center; /* Center the text */
+    }
+
+    h1 span {
+
+        display: block; /* Display the span as a block element */
+        font-size: 1.3rem; /* Adjust font size for smaller screens */
+        margin-left: 1px;
+        margin-right: 10px;
+    }
+    
+    
+    .message {
+      /* background-color: #00FFFF; */
+      background-color: #5effe7;
+      color: #333;
+      font-size: 1.3rem;
+      font-weight: 700;
+      position: absolute;
+      padding-left: none;
+      margin-left: 10px;
+      top: 1rem;
+      left: 220px;
+      animation: openclose 5s ease-in-out infinite;
+      /* Added: Perspective for 3D effect */
+      perspective: 500px;
+      }
+
+}
+  .word1,
+  .word2 {
+	font-family: tahoma;
+	/* Removed unnecessary white-space */
+  }
+  
+  @keyframes openclose {
+    0% {
+      top: 0.2rem;
+      width: 0;
+    }
+    5% {
+      width: 0;
+    }
+    15% {
+      width: 300px;
+    }
+    30% {
+      top: 0.2rem;
+      width: 300px;
+    }
+    33% {
+      top: 0.2rem;
+      width: 0;
+    }
+    35% {
+      top: 0.2rem;
+      width: 0;
+    }
+    38% {
+      top: -4.5rem;
+      
+    }
+    48% {
+      top: -4.5rem;
+      width: 250px;
+    }
+    62% {
+      top: -4.5rem;
+      width: 250px;
+    }
+    66% {
+      top: -4.5rem;
+      width: 0;
+      text-indent: 0;
+    }
+    71% {
+      top: -9rem;
+      width: 0;
+      text-indent: 5px;
+    }
+    86% {
+      top: -9rem;
+      width: 285px;
+    }
+    95% {
+      top: -9rem;
+      width: 285px;
+    }
+    98% {
+      top: -9rem;
+      width: 0;
+      text-indent: 5px;
+    }
+    100% {
+      top: 0;
+      width: 0;
+      text-indent: 0;
+    }
+  
+  }
+
+
+
+  .text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px; /* Adjust top margin as needed */
+    margin-bottom: 20px; /* Adjust bottom margin as needed */
+    margin-left: auto; /* Align container to the center horizontally */
+    margin-right: auto; /* Align container to the center horizontally */
+    max-width: 1000px;
+    /* Adjust max-height as needed */
+}
+
+.text-container p {
+  font-weight: 550;
+  font-size: 18px; /* Default font size */
+  line-height: 0.1; /* Adjust the line height as per your preference */
+
+
+}
+
+  .emailinput-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px; /* Adjust top margin as needed */
+    margin-bottom: 20px; /* Adjust bottom margin as needed */
+    margin-left: auto; /* Align container to the center horizontally */
+    margin-right: auto; /* Align container to the center horizontally */
+    max-width: 1000px;
+    /* Adjust max-height as needed */
+}
+
+.emailinput-container p {
+  font-size: 18px; /* Default font size */
+}
+
+
+
+
+/* Media query for screens smaller than 768px (mobile devices) */
+@media screen and (max-width: 767px) {
+  .emailinput-container p {
+    font-size: 14px; /* Decrease font size for smaller screens */
+  }
+}
+
+
+
+.emailinput-textbox-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%; /* Adjust width as needed */
+  max-width: 2000px; /* Adjust max-width as needed */
+  margin-bottom: 20px; /* Adjust bottom margin as needed */
+  margin-left: 1px;
+}
+
+.emailoutput-textbox-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%; /* Adjust width as needed */
+  max-width: 2000px; /* Adjust max-width as needed */
+  margin-bottom: 20px; /* Adjust bottom margin as needed */
+  margin-left: 1px;
+}
+
+
+	
+	.emailInput {
+   width: 100%;
+   height: 200px;
+   padding: 10px;
+   border: 1px solid #ccc;
+   resize: none;
+	}
+
+  .emailOutput {
+    width: 100%;
+    height: 200px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    resize: none;
+   }
+	
+	textarea {
+	 width: 100%;
+	 height: 250px;
+	 padding: 10px;
+	 font-size: 1em;
+	 border: 1px solid #ddd;
+	 border-radius: 5px;
+	 margin-bottom: 10px;
+	 resize: none;
+	}
+	
+	
+	
+	.container {
+   display: flex;
+   justify-content: space-between;
+   width: 80%; 
+	}
+	
+	 .option1-1 { 
+   width: 31%;
+   resize: vertical;
+	 } 
+
+   .option1-2 {
+    width: 31%;
+    resize: vertical;
+   } 
+
+   .option2-1 {
+    width: 31%;
+   } 
+
+	 .option2-2 {
+    width: 31%;
+   } 
+  
+
+
+
+   .container4 {
+    margin-top: 10px;
+    margin-right: auto;  
+    margin-left: auto; 
+    background-color: #f5f5f5;
+    color: #333;
+    width: 80%;
+    height: 400px;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: vertical;
+    position: relative; /* Add this line */
+}
+
+.Generate-text {
+    font-family: 'B612', sans-serif;
+    font-size: 16px !important;
+    background-color: #5effe7;
+    color: black;
+    border: 2px solid rgba(0, 0, 0, 0.188);
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 10px;
+    cursor: pointer;
+    position: absolute;
+    left: 1px; /* Adjust as needed */
+    bottom: -50px; /* Adjust as needed */
+}
+
+.Paste-text {
+  font-family: 'B612', sans-serif;
+  font-size: 16px !important;
+  background-color: #fefefe;
+  color: black;
+  border: 2px solid rgba(0, 0, 0, 0.188);
+  padding: 10px 35px;
+  font-size: 1em;
+  border-radius: 10px;
+  cursor: pointer;
+  position: absolute;
+  right: 1px; /* Adjust as needed /
+  bottom: -50px; / Adjust as needed */
+}
+.History-text{
+    font-family: 'B612', sans-serif;
+    font-size: 12px !important;
+    background-color: #fefefe;
+    color: black;
+    border: 2px solid rgba(0, 0, 0, 0.188);
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 10px;
+    cursor: pointer;
+    position: absolute;
+    right: 50%; /* Adjust as needed */
+    transform: translateX(50%); /* Centers the element horizontally */
+    bottom: -35px; /* Adjust as needed */
+    text-align: center; /* Centers text content */
+}
+
+
+
+
+  .container5 {
+    margin-top: 10px;
+    margin-right: auto;  
+    margin-left: auto; 
+    background-color: #f5f5f5;
+    color: #333;
+    width: 80%;
+    height: 400px;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: vertical;
+    position: relative;
+  }
+
+.Regenerate-text {
+    font-family: 'B612', sans-serif;
+    font-size: 16px !important;
+    background-color: #5effe7;
+    color: black;
+    border: 2px solid rgba(0, 0, 0, 0.188);
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 10px;
+    cursor: pointer;
+    position: absolute;
+    left: 1px; /* Adjust as needed */
+    bottom: -50px; /* Adjust as needed */
+}
+
+.Copy-text {
+    font-family: 'B612', sans-serif;
+    font-size: 16px !important;
+    background-color: #fefefe;
+    color: black;
+    border: 2px solid rgba(0, 0, 0, 0.188);
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 10px;
+    cursor: pointer;
+    position: absolute;
+    right: 1px; /* Adjust as needed */
+    bottom: -50px; /* Adjust as needed */
+}
+
+   #output {
+ 
+   background-color: #f5f5f5;
+   color: #333;
+   width: 100%;
+   height: 250px;
+   padding: 10px;
+   font-size: 1em;
+   border: 1px solid #ddd;
+   border-radius: 5px;
+   margin-left: 1px;
+   resize: vertical;
+	 } 
+
+
+	 .container1 {
+   display: flex;
+   width: 100%;
+	}
+	
+  .Generatecontainer {
+    display: flex;
+    width: 100%;
+   }
+
+   .Pastecontainer{
+    display: flex;
+    width: 100%;
+   }
+
+   .Historycontainer{
+    display: center;
+    width: 100%;
+   }
+
+   	
+  .Regeneratecontainer {
+    display: flex;
+    width: 100%;
+   }
+
+   .Copycontainer{
+    display: flex;
+    width: 100%;
+   }
+  
+  
+
+
+
+
+
+  .photo1 {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+	
+}
+
+
+@media screen and (max-width: 767px) {
+  .photo1 img {
+    width: 90px; /* Adjust the width for smaller screens */
+    height: 50px; /* Adjust the height for smaller screens */
+  }
+}
+
+
+
+
+
+/* Add styles for about.html */
+
+.container6{ 
+	margin-top: 10px;
+	
+	margin-right: 127px;
+	
+	
+	background-color: #f5f5f5;
+	
+	color: #333;
+	width: 80%;
+	height: 500px;
+	padding: 10px;
+	font-size: 1em;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	margin-left: 95px;
+	resize: vertical;
+   } 
+
+   .about-image {
+  margin-left: 500px;
+  margin-top: 20px;
+	
+}
+
+.step1{
+  margin-left: 100px;
+}
+
+.step1-container {
+  display: flex;
+}
+
+.step1-image {
+  flex: 0 0 auto; /* The image won't grow or shrink */
+  margin-top: 20px;
+  margin-right: 10px; /* Adjust margin as needed */
+  
+  } 
+
+.container-step1 { 
+  flex: 1; /* Take up remaining space */
+  margin-top: 100px;
+  margin-right: 197px;
+  font-family: 'B612', sans-serif;
+  background-color: #0000005c;
+ 
+  height: 100px;
+
+ 
+  
+  border-radius: 5px;
+  margin-left: 50px;
+  resize: vertical;
+ 
+   color: rgb(255, 255, 255);
+   border: 2px solid rgba(0, 0, 0, 0.188);
+   padding: 10px 20px;
+   font-size: 1em;
+   border-radius: 10px;
+   
+   /* margin-left: 5px; */
+   /* margin-top: -15px; */
+}
+
+
+
+
+.step2{
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.step2-container {
+  display: flex;
+}
+
+.step2-image {
+  flex: 0 0 auto; /* The image won't grow or shrink */
+  margin-top: 20px;
+  margin-right: 10px; /* Adjust margin as needed */
+  
+}
+
+.container-step2 {
+  flex: 1; /* Take up remaining space */
+  margin-top: 100px;
+  margin-right: 197px;
+  font-family: 'B612', sans-serif;
+  background-color: #00000067;
+  width: 3px;
+  height: 100px;
+
+ 
+  
+  border-radius: 5px;
+  margin-left: 50px;
+  
+ 
+   color: rgb(255, 255, 255);
+   border: 2px solid rgba(0, 0, 0, 0.188);
+   padding: 10px 20px;
+   font-size: 1em;
+   border-radius: 10px;
+   
+   /* margin-left: 5px; */
+   /* margin-top: -15px; */
+
+}
+
+.step3{
+  margin-left: 100px;
+  margin-top: 20px;
+}
+
+.step3-container {
+  display: flex;
+}
+
+.step3-image {
+  flex: 0 0 auto; /* The image won't grow or shrink */
+  margin-top: 20px;
+  margin-right: 10px; /* Adjust margin as needed */
+  
+}
+
+.container-step3 {
+  flex: 1; /* Take up remaining space */
+  margin-top: 100px;
+  margin-right: 197px;
+  font-family: 'B612', sans-serif;
+  background-color: #00000067;
+  width: 3px;
+  height: 100px;
+
+ 
+  
+  border-radius: 5px;
+  margin-left: 50px;
+  
+ 
+   color: rgb(255, 255, 255);
+   border: 2px solid rgba(0, 0, 0, 0.188);
+   padding: 10px 20px;
+   font-size: 1em;
+   border-radius: 10px;
+   
+   /* margin-left: 5px; */
+   /* margin-top: -15px; */
+
+
+} 
+
+
+
+.centered-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.centered-content p {
+  font-size: 4em; /* Example: Adjust font size using em units */
+  
+}
+
+.centered-content img {
+  width: 30%; /* Example: Adjust width using percentage */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.container-about1{ 
+  margin-top: 20px;
+  margin-right: 127px;
+  font-family: 'B612', sans-serif;
+  background-color: #ffffff2b;
+  color: #333;
+  width: 80%;
+  height: 200px;
+  padding: 10px;
+  font-size: 1em;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-left: 135px;
+  resize: vertical;
+   } 
+
+   .container-about1 p {
+    font-size: 1em; /* Adjust font size as needed */
+    margin: 15px 0; /* Add margin top and bottom for spacing */
+}
+
+
+   .container-about2{ 
+    margin-top: 20px;
+    margin-right: 127px;
+    font-family: 'B612', sans-serif;
+    background-color: #f5f5f527;
+    color: #333;
+    width: 80%;
+    height: 500px;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-left: 135px;
+    resize: vertical;
+     } 
+
+
+     .container-about3{ 
+      margin-top: 20px;
+      margin-right: 127px;
+      font-family: 'B612', sans-serif;
+      background-color: #f5f5f524;
+      color: #333;
+      width: 80%;
+      height: 400px;
+      padding: 10px;
+      font-size: 1em;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-left: 135px;
+      resize: vertical;
+       } 
+
+       .container-about4{ 
+        margin-top: 20px;
+        margin-right: 127px;
+        font-family: 'B612', sans-serif;
+        background-color:none;
+        color: #333;
+        width: 80%;
+        height: 50px;
+        padding: 10px;
+        font-size: 1em;
+        
+        border-radius: 5px;
+        margin-left: 135px;
+        resize: vertical;
+         } 
+         
+ /* FOOTER SECTION */
+.footer-section img {
+  margin: var(--footer-section-img-margin, 27px); /* Adjust the margin top/bottom and left/right as needed */
+}
+
+footer {
+  background-color: rgba(6, 6, 6, 0.425);
+}
+
+footer * {
+  color: rgb(255, 255, 255);
+}
+
+.footer-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start; /* Adjust alignment to flex-start */
+}
+
+.footer-section {
+  flex: 1; /* Let the sections occupy equal space */
+  text-align: left;
+  padding: 5px;
+  box-sizing: border-box; /* Include padding in the width */
+  max-width: 300px; /* Limit maximum width for better responsiveness */
+}
+
+.footer-section p {
+  margin-top: -5px; /* Adjust the value as needed */
+  margin-left: 50px;
+}
+
+.footer-section:nth-child(1) {
+  margin-right: 20px;
+}
+
+.footer-section ul {
+  list-style-type: none;
+  padding: 0;
+  text-align: left;
+}
+
+.footer-section li {
+  margin-bottom: 15px;
+}
+
+
+.footer-section a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
+.footer-section a:hover {
+  text-decoration: underline;
+  color: black;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  border-top: 1px solid black;
+}
+
+.copyright {
+  /* Adjust the position freely */
+  margin-top: 0px; /* Example: Add margin at the top */
+  padding-left: 50px; /* Example: Add padding to the left */
+}
+
+.social-media-icons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* horizontally align to the end */
+  margin-top: 0px; /* adjust vertical position */
+  margin-right: var(--social-media-icons-margin-right, 50px); /* adjust horizontal position */
+}
+
+.social-media-icons img {
+  width: 30px;
+  height: 30px;
+  /* Adjust spacing between icons */
+  margin-left: var(--social-media-icons-img-margin-left, 20px); /* Change this value to adjust horizontal spacing */
+  /* You can also adjust vertical spacing if needed */
+  margin-top: var(--social-media-icons-img-margin-top, 5px); /* Change this value to adjust vertical spacing */
+}
+
+@media only screen and (max-width: 767px) {
+  #company-section {
+    margin-left: var(--company-section-margin-left-mobile, 10px); 
+    
+  } 
+
+  #products-section {
+     margin-left: var(--company-section-margin-left-mobile, 10px);
+  
+  }
+}
+
+
+@media only screen and (max-width: 768px) {
+  .footer-wrapper {
+    flex-direction: column; /* Stack sections vertically on smaller screens */
+    align-items: center; /* Center align sections */
+  }
+
+  .footer-section {
+    max-width: none; /* Remove max-width restriction */
+    margin-bottom: 20px; /* Add space between sections */
+    text-align: center; /* Center align text */
+    margin-left: 0; /* Reset left margin */
+    margin-right: 0; /* Reset right margin */
+  }
+
+  #products-section ul {
+    list-style-type: none; /* Remove default list styles */
+    padding: 0; /* Remove default padding */
+    margin-right: 80px;
+  }
+  
+  #products-section ul li {
+    margin-bottom: 10px; /* Add space between list items */
+  }
+  
+  #products-section ul li a {
+    text-decoration: none; /* Remove underline from links */
+    color: #ffffff; /* Set link color */
+    font-size: 16px; /* Set font size for links */
+  }
+  
+  #products-section ul li a:hover {
+    color: #000000; /* Change link color on hover */
+  }
+
+  #company-section {
+    margin-top: var(--company-section-margin-top-mobile, 10px); /* Adjust position */
+  }
+
+  #products-section {
+    margin-top: var(--products-section-margin-top-mobile, 10px); /* Adjust position */
+
+  }
+
+  .social-media-icons {
+    justify-content: center; /* Center align social media icons */
+  }
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #00000064;
+  background-color: #e5e5e5;
+  padding: 20px;
+  z-index: 9999;
+}
+
+.popup-content {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.close {
+  float: right;
+  cursor: pointer;
+}

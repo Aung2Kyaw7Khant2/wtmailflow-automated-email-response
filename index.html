@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="homepage.html"></script>
+	
+</head>
+
+<style>
+    :root {
+        --link-spacing: 30px; /* Change this value to adjust the spacing between links */
+        --navbar-height: 70px; /* Change this value to adjust the height of the navbar */
+    }
+
+	textarea{
+		font-size: 15px;
+	}
+	
+    
+</style>
+
+<body>
+    <div class="navbar">
+        <a class="navbar-brand" href="homepage.html">
+            <img src="images/Logo_finall.png" alt="" width="160" height="50"/>
+        </a>
+        <ul>
+            <li>
+				<a class="nav-link" href="homepage.html"><b>Home</b></a>
+                
+            </li>
+
+            <li>
+                <a class="nav-link" href="about.html"><b>About Us</b></a>
+            </li>
+
+            <li>
+                <a class="nav-link" href="guideline.html"><b>User Guideline</b></a>
+            </li>
+        </ul>
+    </div>
+
+	
+	<div class="navbar1">
+		<a class="navbar-brand" href="homepage.html">
+			<img src="images/Logo_finall.png" alt="" width="150" height="50"/>
+		</a>
+		<!-- Mobile menu button -->
+		<button class="toggle-button" onclick="toggleMenu()">&#9776;</button>
+		<!-- Menu overlay and container -->
+		<div class="menu-overlay" onclick="toggleMenu()"></div>
+		<div class="menu-container">
+			<!-- Close button -->
+			<button class="close-button" onclick="toggleMenu()">Close</button>
+			<!-- Navigation menu -->
+			<ul class="vertical-menu" id="verticalMenu">
+				<li>
+					<a class="nav-link" href="homepage.html"><b>Home</b></a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	
+	<script>
+	function toggleMenu() {
+    var menuOverlay = document.querySelector('.menu-overlay');
+    var menuContainer = document.querySelector('.menu-container');
+    var verticalMenu = document.getElementById('verticalMenu');
+
+    menuOverlay.classList.toggle('active');
+    menuContainer.classList.toggle('active');
+    verticalMenu.classList.toggle('show-menu');
+}
+</script>
+
+
+<script>
+function pasteFromClipboard() {
+    // Get the text area element
+    var textArea = document.getElementById("emailInput");
+    
+    // Check if the browser supports the Clipboard API
+    if (navigator.clipboard) {
+        // Use the Clipboard API to read text from the clipboard
+        navigator.clipboard.readText().then(function(text) {
+            // Set the text from clipboard to the text area
+            textArea.value = text;
+        }).catch(function(err) {
+            console.error('Failed to read clipboard contents: ', err);
+        });
+    } else {
+        // Fallback for browsers that do not support the Clipboard API
+        console.error('Clipboard API not supported');
+    }
+}
+function copyToClipboard() {
+    // Get the text area element
+    var textArea = document.getElementById("emailOutput");
+    
+    // Select the text inside the text area
+    textArea.select();
+    
+    // Copy the selected text to the clipboard
+    document.execCommand("copy");
+    
+    // Deselect the text area
+    textArea.setSelectionRange(0, 0);
+    
+    // Notify the user that the text has been copied
+    alert("Text copied to clipboard!");
+}
+document.addEventListener("DOMContentLoaded", function() {
+    // Your other JavaScript code if any
+});
+function openPopup() {
+    const popup = document.getElementById('popup');
+    popup.style.display = 'block';
+    updateHistory();
+}
+
+// Function to close the popup UI
+function closePopup() {
+    const popup = document.getElementById('popup');
+    popup.style.display = 'none';
+}
+
+</script>
+    
+	<div class="container1">
+		<div class="wave"></div>
+		<div class="wave"></div>
+		<div class="wave"></div>
+	</div>  
+
+
+
+	<h1>
+		<span>&nbsp; Our email system is</span>
+		<div class="message">
+		  <div class="word1">Authentic</div>
+		  <div class="word2">Fastest</div>
+		</div>
+	</h1>
+	  
+		
+		<div class="photo1">
+			<img src="images/arrow_WT.png" alt=""  width="120" height="60"/>
+		</div>
+
+		</h1> 
+		
+		<div class="text-container">
+		<p> &nbsp;&nbsp;&nbsp;Authentic Autoreply... </p>
+		<p>   AI-Driven Email Responses   </p>
+		
+		</div>
+		<script type="importmap">
+			{
+			  "imports": {
+				"@google/generative-ai": "https://esm.run/@google/generative-ai"
+			  }
+			}
+		  </script>
+		<script type = "module">
+			import { GoogleGenerativeAI } from "@google/generative-ai";
+			const API_Key = "AIzaSyC15OblnHO2S1QXe4cpeAWm-dQ3mkZfkMY";
+			const genAI = new GoogleGenerativeAI(API_Key);
+			let history = [];
+
+			function updateHistory() {
+    			const historyList = document.getElementById('history-list');
+    			historyList.innerHTML = '';
+    // Loop through history array and append each interaction to the list
+    			history.forEach(entry => {
+        		const listItem = document.createElement('li');
+        		listItem.textContent = `${entry.type}: ${entry.message}`;
+        		historyList.appendChild(listItem);
+    });
+}
+		
+			// async function processInput() {
+			//     // Get the value of the user input text area
+			//     var userInput = document.getElementById("emailInput").value;
+		
+			//     // Call the function to interact with AI and generate response
+			//     const answer = await generateAIResponse(userInput);
+			// 	console.log(answer);
+			// }
+		
+		
+			async function generateAIResponse() {
+				try {
+					// Get the generative model for chat responses
+					const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+
+					const outputTextArea = document.getElementById("emailOutput")
+					outputTextArea.value = "Generating...";
+		
+					const userInput = document.getElementById("emailInput").value;
+					history.push({ type: 'User', message: userInput });
+		
+					// Start a chat session with initial conversation history
+					const chat = model.startChat({
+						history: [
+							{
+								role: "user",
+								parts: [{text:"What is your system and CEO?"}],
+							},
+							{
+								role: "model",
+								parts:[{text: "This website is for sneaker e-commerce automated email response system. Input customers' email and we will automatically reply for you. AJ Bill is our CEO and founded our company in 2024.the headquarter is in Bangkok, Thailand. Althought he is CEO, he is not a fan of sneakers, neverthelss he had wise vision  in this industry. He also don't like durain. Our Company has 50% discount on Air Jordan every December yearly."}],
+							},
+							{
+								role: "user",
+								parts: [{text:"How do you reply to our customers' emails?"}],
+							},
+							{
+								role: "model",
+								parts: [{text:"I will analyze the customer's email and reply with an appropriate response in email format."}],
+							},
+							{
+								role: "user",
+								parts: [{text:"who are you?"}],
+							},
+							{
+								role: "model",
+								parts: [{text:"I am AI based helping assistant to reply customers' email for sneaker industry. I was developed by team Walkie Talkie for this project."}],
+							},
+							{
+								role: "user",
+								parts: [{text:"who are the Walkie Talkie team members?"}],
+							},
+							{
+								role: "model",
+								parts: [{text:"The team members include Patrick, Ann, Jack, Yunn, Mio and DD."}],
+							},
+							{
+       							role: "user",
+       							parts: [{text: "sample email for feedback from customers who left a negative review "}],
+       						},
+      						{
+       							role: "model",
+       							parts: [{text: "Dear [Customer],Welcome to [Company name], and thank you for subscribing to our [services]. We’re very excited to have you on board and are eager to assist in any way we can. If there’s anything we can do to improve your experience, please don’t hesitate to reach out.Best regards,[Your name]"}]
+							},
+       
+       						{
+       							role: "user",
+       							parts: [{text: "Feedback appreciate email respond"}],
+       						},
+       						{
+       							role: "model",
+       							parts: [{text: "Dear [Customer], We highly appreciate the feedback you recently provided. Your thoughts and opinions are incredibly valuable to us, and we’re grateful for the opportunity to learn from your experience. We’re always looking for ways to improve, and are constantly tweaking our product to better suit client needs, so we have forwarded your thoughts to the R&D department to make sure changes are being implemented.  Best regards. [Your Name]"}],
+      						}
+							
+						],
+						generationConfig: {
+							maxOutputTokens: 25000,
+						},
+					});
+		
+					// Send the user's input to the chat and await the response
+					const result = await chat.sendMessage(userInput);
+					
+					// Get the response text from the result
+					const response = await result.response;
+					const text = response.text();
+					history.push({ type: 'AI', message: text });
+        // After pushing the response to history, update the popup UI
+        			updateHistory();
+					
+					
+		
+					// Set the AI response to the output text area
+					document.getElementById("emailOutput").value = text;
+				} catch (error) {
+					console.error("Error:", error);
+				}
+			}
+
+			const generateButton = document.querySelector('.Generate-text');
+			generateButton.addEventListener('click', generateAIResponse);
+			const regenerateButton = document.querySelector('.Regenerate-text');
+			regenerateButton.addEventListener('click', generateAIResponse);
+		</script>
+		
+		<div class="container4">
+			<p>Input Email...</p>
+		   
+		<div class="emailinput-textbox-container">
+			<textarea id="emailInput" placeholder="Paste or write an email here"></textarea>
+			  
+			
+			<div class="Generatecontainer">
+				<button class="Generate-text" id="generateBtn" >Generate</button>
+		</div>
+		<script>
+			var input = document.getElementById("emailInput");
+			input.addEventListener("keypress", function(event) {
+			if (event.key === "Enter") {
+			 event.preventDefault();
+			 document.getElementById("generateBtn").click();
+			}
+			});
+		
+		   </script>
+
+			<div class="Pastecontainer">
+					<button class="Paste-text" onclick="pasteFromClipboard()">Paste</button>
+			</div>
+			<div class="Historycontainer">
+			<button class="History-text" onclick="openPopup()">Show History</button>
+			</div>
+<div id="popup" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup()">&times;</span>
+        <h2>Chat History</h2>
+        <ul id="history-list"></ul>
+    </div>
+</div>
+			
+		</div> 
+		</div>
+			 
+
+
+			 <div class="container5">
+				<p>Output Email...</p>
+			   
+			<div class="emailoutput-textbox-container">
+				
+				<textarea id="emailOutput" placeholder="Output"></textarea>
+				  
+				<div class="Regeneratecontainer">
+						<button class="Regenerate-text">Regenerate</button>
+				</div>
+
+				<div class="Copycontainer">
+						<button class="Copy-text" onclick="copyToClipboard()">Copy</button>
+				</div>
+			</div>
+		</div>
+				 
+
+			
+			
+		<footer>
+			<div class="footer-wrapper">
+		
+				<div class="footer-section">
+					<img src="images/Logo_finall.png" alt="" width="190" height="60"/>
+					<p>#Your Premier Solution for Automated Email Response AI.</p>
+					
+					<p>Elevate Your Content with Uniquely Crafted Responses.</p>
+				</div>
+				<div class="footer-section" id="company-section">
+					<h3>Company</h3>
+					<ul>
+						<li><a href="#">Blog</a></li>
+						<li><a href="#">Contact Us</a></li>
+						<li><a href="#">Policy</a></li>
+						<li><a href="#">Terms and Conditions</a></li>
+					</ul>
+				</div>
+				<div class="footer-section" id="products-section">
+					<h3>Products</h3>
+					<ul>
+						<li><a href="#">Home</a></li>
+						<li><a href="#">About Us</a></li>
+						<li><a href="#">User Guide</a></li>
+					</ul>
+				</div>
+
+			</div>
+			<div class="footer-bottom">
+			  <div class="copyright">
+			 <p>Copyright © 2024 WTmailflow, Inc. All rights reserved.</p>
+			  </div>
+			  <div class="social-media-icons">
+			 <a href="#"><img src="images/fb.png" alt="Facebook" width="100" height="25"></a>
+			 <a href="#"><img src="images/twitter.png" alt="Twitter" width="100" height="25"></a>
+			 <a href="#"><img src="images/insta.png" alt="Instagram" width="140" height="25"></a>
+			  </div>
+			
+		</div>
+		</footer>
+</body>
+</html>
